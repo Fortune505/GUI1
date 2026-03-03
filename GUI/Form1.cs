@@ -6,5 +6,12 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBoxSquare.Text = Properties.Settings.Default.SavedSquare;
+
+            textBoxCircle.Text = Properties.Settings.Default.SavedCircle;
+        }
     }
 }
