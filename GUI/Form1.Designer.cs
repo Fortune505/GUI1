@@ -76,6 +76,7 @@
             buttonCompare.TabIndex = 4;
             buttonCompare.Text = "Нажми на кнопку получишь результат";
             buttonCompare.UseVisualStyleBackColor = true;
+            buttonCompare.Click += buttonCompare_Click;
             // 
             // labelResult
             // 
@@ -99,6 +100,7 @@
             Controls.Add(textBoxSquare);
             Name = "Form1";
             Text = "Form1";
+            FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
