@@ -8,9 +8,9 @@ namespace GUI
 {
     public class Logic
     {
-        public static double GetSKv(double a) => a * a;
+        public static double GetSquareArea(double a) => a * a;
 
-        public static double GetSKr(double r)
+        public static double GetCircleArea(double r)
         {
             const double pi = 3.14;
             return r * r * pi;

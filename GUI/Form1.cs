@@ -24,33 +24,33 @@ namespace GUI
 
         private void buttonCompare_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(textBoxSquare.Text, out double a) || !double.TryParse(textBoxCircle.Text, out double r))
+            if (!double.TryParse(textBoxSquare.Text, out double squareInput) || !double.TryParse(textBoxCircle.Text, out double circleInput))
             {
                 MessageBox.Show("Введи число, а не букву", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
 
-            double SKv = Logic.GetSKv(a);
-            double SKr = Logic.GetSKr(r);
+            double squareSide = Logic.GetSquareArea(squareInput);
+            double circleRadius = Logic.GetCircleArea(circleInput);
 
-            string itogovaFraza = "";
+            string finalPhrase = "";
 
-            if (SKv > SKr)
+            if (squareSide > circleRadius)
             {
-                itogovaFraza = $"Площадь квадрата больше.\nS квадрат = {SKv} \nS круг = {SKr}";
+                finalPhrase = $"Площадь квадрата больше.\nS квадрат = {squareSide} \nS круг = {circleRadius}";
             }
-            else if (SKv < SKr)
+            else if (squareSide < circleRadius)
             {
-                itogovaFraza = $"Площадь круга больше.\nS квадрат = {SKv} \nS круг = {SKr}";
+                finalPhrase = $"Площадь круга больше.\nS квадрат = {squareSide} \nS круг = {circleRadius}";
             }
             else {
-                itogovaFraza = $"Площади равны! \nS {SKv} = {SKr}";
+                finalPhrase = $"Площади равны! \nS {squareSide} = {circleRadius}";
             }
 
-            labelResult.Text = itogovaFraza;
+            labelResult.Text = finalPhrase;
 
-            MessageBox.Show(itogovaFraza, "Результат вычислений", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(finalPhrase, "Результат вычислений", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
