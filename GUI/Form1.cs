@@ -24,33 +24,24 @@ namespace GUI
 
         private void buttonCompare_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(textBoxSquare.Text, out double squareInput) || !double.TryParse(textBoxCircle.Text, out double circleInput))
-            {
+            if (!double.TryParse(textBoxSquare.Text, out double squareInput) || !double.TryParse(textBoxCircle.Text, out double circleInput)){
                 MessageBox.Show("Введи число, а не букву", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-
             }
 
-            double squareSide = Logic.GetSquareArea(squareInput);
-            double circleRadius = Logic.GetCircleArea(circleInput);
+            int result = Logic.CompareAreas(squareInput, circleInput);
+            double areaSquare = Logic.GetSquareArea(squareInput);
+            double areaCircle = Logic.GetCircleArea(circleInput);
+            string finalPhrese;
 
-            string finalPhrase = "";
-
-            if (squareSide > circleRadius)
-            {
-                finalPhrase = $"Площадь квадрата больше.\nS квадрат = {squareSide} \nS круг = {circleRadius}";
-            }
-            else if (squareSide < circleRadius)
-            {
-                finalPhrase = $"Площадь круга больше.\nS квадрат = {squareSide} \nS круг = {circleRadius}";
-            }
-            else {
-                finalPhrase = $"Площади равны! \nS {squareSide} = {circleRadius}";
+            if (result == 1) {
+                finalPhrese = $"Площадь квадрата больше.\nS квадрата = {areaSquare}\nS круга = {areaCircle}";
+            } else {
+                finalPhrese = $"Площадь круга больше.\nS квадрата = {areaSquare}\nS круга = {areaCircle}";
             }
 
-            labelResult.Text = finalPhrase;
-
-            MessageBox.Show(finalPhrase, "Результат вычислений", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            labelResult.Text = finalPhrese;
+            MessageBox.Show(finalPhrese, "Результат вычислений", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
